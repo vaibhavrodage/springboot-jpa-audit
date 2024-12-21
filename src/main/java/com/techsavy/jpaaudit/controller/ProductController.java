@@ -2,7 +2,6 @@ package com.techsavy.jpaaudit.controller;
 
 import com.techsavy.jpaaudit.entity.Product;
 import com.techsavy.jpaaudit.service.ProductService;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
