@@ -3,6 +3,7 @@ package com.techsavy.jpaaudit.controller;
 import com.techsavy.jpaaudit.entity.Product;
 import com.techsavy.jpaaudit.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.history.Revisions;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +29,12 @@ public class ProductController {
     @PutMapping
     public ResponseEntity<Product> updateProduct(@RequestBody Product product) {
         return ResponseEntity.ok(productService.updateProduct(product));
+    }
+
+    @GetMapping("/{id}/revisions")
+    public ResponseEntity<Revisions<Long,Product>> getRevisions(@PathVariable Long id){
+        Revisions<Long, Product> revisions = productService.getRevisions(id);
+        return ResponseEntity.ok(revisions);
     }
 
 }

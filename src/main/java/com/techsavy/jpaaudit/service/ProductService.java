@@ -4,6 +4,7 @@ import com.techsavy.jpaaudit.entity.Product;
 import com.techsavy.jpaaudit.repo.ProductRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.history.Revisions;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -29,5 +30,9 @@ public class ProductService {
         }else{
             throw new EntityNotFoundException("Product Not found");
         }
+    }
+
+    public Revisions<Long, Product> getRevisions(Long id){
+      return  productRepository.findRevisions(id);
     }
 }
